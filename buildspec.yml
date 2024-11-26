@@ -4,15 +4,22 @@ phases:
   install:
     runtime-versions:
       java: corretto17
+    commands:
+      - echo Installing dependencies...
+      - yum update -y
+      - yum install - y ant
   pre_build:
     commands:
+      - echo Pre-build stage...
       - env
       - ant -f test.xml -v
   build:
     commands:
+      - echo Build stage...
       - ant -f build.xml -v
 
 artifacts:
   files:
     - dist/rectangle.jar
   name: rectangle-$(date +%y%m%d%H%M).zip
+  discard-paths: no
