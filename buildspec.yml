@@ -17,7 +17,9 @@ phases:
     commands:
       - echo Build stage...
       - ant -f build.xml -v
-
+  post_build:
+    commands:
+      -echo "tests completed"
 artifacts:
   files:
     - dist/rectangle.jar
